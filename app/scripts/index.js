@@ -21,13 +21,47 @@ const createStar = async () => {
   const instance = await StarNotary.deployed();
   const name = document.getElementById("starName").value;
   const id = document.getElementById("starId").value;
-  await instance.createStar(name, id, {from: account});
+  await instance.createStar(name, id, 'name', 'id', 'name', 'name', { from: account });
   App.setStatus("New Star Owner is " + account + ".");
 }
 
-// Add a function lookUp to Lookup a star by ID using tokenIdToStarInfo()
+const getTokenNameAndSymbol = async function () {
+  const instance = await StarNotary.deployed();
+  let name = instance.name();
+  let symbol = instance.symbol();
 
-//
+  console.log({ name, symbol });
+}
+
+const lookUpStar = async () => {
+  const instance = await StarNotary.deployed();
+  const id = document.getElementById("starIdToBeFound").value;
+  var name = await instance.lookUptokenIdToStarInfo(id);
+  App.setStatus("Found a star with the name" + name + ".");
+}
+
+const getStarOwner = async () => {
+  const instance = await StarNotary.deployed();
+  const id = document.getElementById("starIdFindOwner").value;
+  var name = await instance.ownerOf(id);
+  App.setStatus("Star owner is " + name + ".");
+}
+
+const transferStar = async () => {
+  const instance = await StarNotary.deployed();
+  const starId = document.getElementById("starIdToBeTransferred").value;
+  const address = document.getElementById("addressToReceiveStar").value;
+  var name = await instance.transferStar(address, starId, { from: account });
+  App.setStatus("Star transferred to address" + name + ".");
+}
+
+const exchangeStars = async () => {
+  const instance = await StarNotary.deployed();
+  const starId1 = document.getElementById("starIdToBeExchanged1").value;
+  const starId2 = document.getElementById("starIdToBeExchanged2").value;
+  var name = await instance.exchangeStars(starId1, starId2, { from: account });
+  App.setStatus("Stars exchanged " + name + ".");
+}
 
 const App = {
   start: function () {
@@ -50,7 +84,6 @@ const App = {
 
       accounts = accs
       account = accounts[0]
-
     })
   },
 
@@ -62,6 +95,26 @@ const App = {
   createStar: function () {
     createStar();
   },
+
+  lookUpStar: function () {
+    lookUpStar();
+  },
+
+  transferStar: function () {
+    transferStar();
+  },
+
+  getStarOwner: function () {
+    getStarOwner();
+  },
+
+  exchangeStars: function () {
+    exchangeStars();
+  },
+
+  getTokenNameAndSymbol: function () {
+    getTokenNameAndSymbol();
+  }
 
 }
 

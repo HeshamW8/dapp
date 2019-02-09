@@ -1,27 +1,70 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>StarNotary DAPP Front End</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <script src="./app.js"></script>
 </head>
+
 <body>
   <h1>StarNotary Token DAPP</h1>
 
   <hr>
 
   <br>
-    <h1>Create a Star</h1>
-    <br><label for="starName">Star Name:</label><input type="text" id="starName"></input>
-    <br><label for="starId">Star ID:</label><input type="text" id="starId"></input>
-    <br><br><button id="createStar" onclick="App.createStar()">Create Star</button>
-    <br><br>
-    <br>
+  <h1>Create a Star</h1>
+  <br><label for="starName">Star Name:</label><input type="text" id="starName"></input>
+  <br><label for="starId">Star ID:</label><input type="text" id="starId"></input>
+  <br><br><button onclick="App.createStar()">Create Star</button>
+  <br><br>
+  <br>
 
-    <span id="status"></span>
+  <hr>
 
-<!--Add an input box and a button to Lookup a star by ID using tokenIdToStarInfo-->
+  <br>
+  <h1>Find a Star</h1>
+  <br><label for="starIdToBeFound">Star ID:</label><input type="number" id="starIdToBeFound"></input>
+  <br><br><button onclick="App.lookUpStar()">Find Star</button>
+  <br><br>
+  <br>
 
-    <br>
+  <hr>
+
+  <br>
+  <h1>Transfer a Star</h1>
+  <br><label for="starIdToBeTransferred">Star ID:</label><input type="number" id="starIdToBeTransferred"></input>
+  <br><label for="addressToReceiveStar">Second Partee Address:</label><input type="text" id="addressToReceiveStar"></input>
+  <ul>
+    <li>0x3dC6e9BdC2cA187AEF2118Ab3E88651aaA062eaC</li>
+    <li>0x4C13f98A827b53c5f8bd4731754a3a7867f93CBf</li>
+  </ul>
+  <br><br><button onclick="App.transferStar()">Transfer Star</button>
+  <br><br>
+  <br>
+
+  <hr>
+
+  <br>
+  <h1>Find Star Owner</h1>
+  <br><label for="starIdFindOwner">Star ID:</label><input type="number" id="starIdFindOwner"></input>
+  <br><br><button onclick="App.getStarOwner()">Find Owner</button>
+  <br><br>
+  <br>
+
+  <hr>
+
+  <br>
+  <h1>Exchange Stars</h1>
+  <br><label for="starIdToBeExchanged1">Star ID:</label><input type="number" id="starIdToBeExchanged1"></input>
+  <br><label for="starIdToBeExchanged2">Star ID:</label><input type="number" id="starIdToBeExchanged2"></input>
+  <br><br><button onclick="App.exchangeStars()">Exchange Stars</button>
+  <br><br>
+  <br>
+
+  <span id="status"></span>
+
+  <br>
 </body>
+
 </html>
